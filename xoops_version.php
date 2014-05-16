@@ -53,12 +53,7 @@ $modversion['templates'][$i]['description'] = 'ad_index_tpl.html';
 $i++ ;
 $modversion['templates'][$i]['file'] = 'as_index_tpl.html';
 $modversion['templates'][$i]['description'] = 'as_index_tpl.html';
-$i++ ;
-$modversion['templates'][$i]['file'] = 'as_book_tpl.html';
-$modversion['templates'][$i]['description'] = 'as_book_tpl.html';
-$i++ ;
-$modversion['templates'][$i]['file'] = 'ajax_as_edit_tpl.html';
-$modversion['templates'][$i]['description'] = 'ajax_as_edit_tpl.html';
+
  
 $i=0 ;
 //偏好設定

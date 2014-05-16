@@ -3,9 +3,11 @@
 <link rel="stylesheet" type="text/css" media="all" href="<{$xoops_url}>/modules/tadtools/css/xoops_adm.css" />
 <script language='javascript' type='text/javascript' src='<{$xoops_url}>/modules/tadtools/My97DatePicker/WdatePicker.js'></script>
 
-  
-     
-
+<style>  
+.table tbody tr > td.success {
+  background-color: #dff0d8 !important;
+}
+</style>
 
 
 <{if  ($month_data.month_id)}>
@@ -22,7 +24,7 @@
 <button type="submit" class="btn btn-success" name='SetDate' value='SetDate' >延期</button>
 <button type="submit" class="btn btn-primary" name='calc' value='calc' title='寫入後才會公佈收費金額'   onclick="return confirm('寫入後才會公佈出收費金額！')">計算、公佈</button>
  
-<a class="btn btn-success" href="export.php?mid=<{$month_data.month_id}>" >匯出全部資料</a>
+<a class="btn btn-success" href="export.php?mid=<{$month_data.month_id}>" >匯出全部名單</a>
 
   <table class="table table-bordered table-hover table-striped">
     <tbody>
@@ -47,7 +49,7 @@
         <td><span id='cost_<{$grade.grade_year}>_<{$grade.time_mode}>' data='<{$grade.cost}>'><{$grade.cost}></span><br>
         </td>
         <td><span id='sdc_<{$grade.grade_year}>_<{$grade.time_mode}>' data='<{$grade.stud_dc}>'><{$grade.stud_dc}></span></td>
-        <td ><input  id='sect_<{$grade.grade_year}>_<{$grade.time_mode}>' data='<{$grade.cost}>_<{$grade.stud_dc}>_<{$grade.teacher_dc}>_<{$grade.class_num}>_<{$grade.stud_num}>'   name="sect_num[<{$grade.grade_year}><{$grade.time_mode}>]" value="<{$grade.sect_num}>" class="span1 sect_num ">
+        <td  class='success'><input  id='sect_<{$grade.grade_year}>_<{$grade.time_mode}>' data='<{$grade.cost}>_<{$grade.stud_dc}>_<{$grade.teacher_dc}>_<{$grade.class_num}>_<{$grade.stud_num}>'   name="sect_num[<{$grade.grade_year}><{$grade.time_mode}>]" value="<{$grade.sect_num}>" class="span1 sect_num ">
         </td>
         <td><span id='tdc_<{$grade.grade_year}>_<{$grade.time_mode}>' data='<{$grade.teacher_dc}>'><{$grade.teacher_dc}></span>
         </td>

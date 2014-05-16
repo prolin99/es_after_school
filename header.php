@@ -14,9 +14,7 @@ $isAdmin=isAdmin();
 //ini_set('display_errors', 'On');
 
  
-$interface_menu['課後照顧']="index.php";
-$interface_menu['點名冊']="book.php";
-
+$interface_menu['課後照顧報名']="index.php";
 
 
 
