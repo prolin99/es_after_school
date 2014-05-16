@@ -1,0 +1,314 @@
+{{* $Id: stud_list_stud_list.tpl,v 1.1.2.4 2005/11/01 15:33:43 brucelyc
+Exp $ *}}
+{{include file="$SFS_TEMPLATE/header.tpl"}}
+{{include file="$SFS_TEMPLATE/menu.tpl"}}
+	<link rel="stylesheet" href="/js/ui/jquery-ui.css">
+	
+	<script src="/js/ui/jquery.ui.core.js"></script>
+	<script src="/js/ui/jquery.ui.widget.js"></script>
+	<script src="/js/ui/jquery.ui.datepicker.js"></script>
+	<script>
+	$(function() {
+ 		//日期設定
+		$( "#datepicker" ).datepicker();
+		$( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+		$( "#datepicker2" ).datepicker();
+		$( "#datepicker2" ).datepicker( "option", "dateFormat", "yy-mm-dd" );		
+	});
+	</script>	
+
+
+
+
+
+<form method="post" action="signAdmin.php" name="main">
+{{if  ($data.month_id)}}
+
+<h2>目前期別：{{$data.month_doc}} </h2>
+
+<input name="Sumit" value="計算、寫入" type="submit" class="btn btn-primary">     <br />
+截止日：<span class="label">{{$data.deadline}}</span> <input   type="text" name="new_deadline"  class="span2"    id="datepicker2"   placeholder="指定新截止日">
+<input name="SetDate" value="延期" type="submit" class="btn btn-success"> 
+  <table class="table table-bordered table-striped">
+    <tbody>
+      <tr>
+        <th>年級</th>
+        <th>時段</th>
+        <th>鐘點費</th>
+        <th>鐘點折數</th>
+        <th>節數</th>
+        <th>鐘點費佔成數</th>
+        <th>班級數</th>
+        <th>學生數</th>
+        <th>收費</th>
+        <th>小計</th>
+      </tr>
+      <tr>
+        <td>一年級<br>
+        </td>
+        <td>4:00<br>
+        </td>
+        <td>260<br>
+        </td>
+        <td>{{$data.dc[11]}}</td>
+        <td><input name="sect_num[11]" value="{{$data.sect_num[11]}}" class="span1"><br>
+        </td>
+        <td>0.7<br>
+        </td>
+        <td>{{$data.class_num[11]}}<br>
+        </td>
+        <td>{{$data.stud_num[11]}}
+        </td>
+        <td>{{$data.pay[11]}}
+        </td>
+        <td>{{$data.pay[11]}}
+        </td>
+      </tr>
+      <tr  >
+        <td><br>
+        </td>
+        <td>5:30<br>
+        </td>
+        <td>400<br>
+        </td>
+        <td>{{$data.dc[12]}}
+        </td>
+        <td><input name="sect_num[12]" value="{{$data.sect_num[12]}}" class="span1"> </td>
+        <td>0.7<br>
+        </td>
+        <td>{{$data.class_num[12]}}
+        </td>
+        <td>{{$data.stud_num[12]}}
+        </td>
+        <td>{{$data.pay[12]}}
+        </td>
+        <td>{{$data.pay2[12]}}
+        </td>
+      </tr>
+      <tr>
+        <td>二年級<br>
+        </td>
+        <td>4:00<br>
+        </td>
+        <td>260<br>
+        </td>
+        <td>{{$data.dc[21]}}</td>
+        <td><input name="sect_num[21]" value="{{$data.sect_num[21]}}" class="span1"><br>
+        </td>
+        <td>0.7<br>
+        </td>
+        <td>{{$data.class_num[21]}}<br>
+        </td>
+        <td>{{$data.stud_num[21]}}
+        </td>
+        <td>{{$data.pay[21]}}
+        </td>
+        <td>{{$data.pay[21]}}
+        </td>
+      </tr>
+      <tr  >
+        <td><br>
+        </td>
+        <td>5:30<br>
+        </td>
+        <td>400<br>
+        </td>
+        <td>{{$data.dc[22]}}
+        </td>
+        <td><input name="sect_num[22]" value="{{$data.sect_num[22]}}" class="span1"> </td>
+        <td>0.7<br>
+        </td>
+        <td>{{$data.class_num[22]}}
+        </td>
+        <td>{{$data.stud_num[22]}}
+        </td>
+        <td>{{$data.pay[22]}}
+        </td>
+        <td>{{$data.pay2[22]}}
+        </td>
+      </tr>
+      <tr>
+        <td>三年級<br>
+        </td>
+        <td>4:00<br>
+        </td>
+        <td>260<br>
+        </td>
+        <td>{{$data.dc[31]}}</td>
+        <td><input name="sect_num[31]" value="{{$data.sect_num[31]}}" class="span1"><br>
+        </td>
+        <td>0.7<br>
+        </td>
+        <td>{{$data.class_num[31]}}<br>
+        </td>
+        <td>{{$data.stud_num[31]}}
+        </td>
+        <td>{{$data.pay[31]}}
+        </td>
+        <td>{{$data.pay[31]}}
+        </td>
+      </tr>
+      <tr >
+        <td><br>
+        </td>
+        <td>5:30<br>
+        </td>
+        <td>400<br>
+        </td>
+        <td>{{$data.dc[32]}}
+        </td>
+        <td><input name="sect_num[32]" value="{{$data.sect_num[32]}}" class="span1"> </td>
+        <td>0.7<br>
+        </td>
+        <td>{{$data.class_num[32]}}
+        </td>
+        <td>{{$data.stud_num[32]}}
+        </td>
+        <td>{{$data.pay[32]}}
+        </td>
+        <td>{{$data.pay2[32]}}
+        </td>
+      </tr>
+      <tr>
+        <td>四年級<br>
+        </td>
+        <td>4:00<br>
+        </td>
+        <td>260<br>
+        </td>
+        <td>{{$data.dc[41]}}</td>
+        <td><input name="sect_num[41]" value="{{$data.sect_num[41]}}" class="span1"><br>
+        </td>
+        <td>0.7<br>
+        </td>
+        <td>{{$data.class_num[41]}}<br>
+        </td>
+        <td>{{$data.stud_num[41]}}
+        </td>
+        <td>{{$data.pay[41]}}
+        </td>
+        <td>{{$data.pay[41]}}
+        </td>
+      </tr>
+      <tr  >
+        <td><br>
+        </td>
+        <td>5:30<br>
+        </td>
+        <td>400<br>
+        </td>
+        <td>{{$data.dc[42]}}
+        </td>
+        <td><input name="sect_num[42]" value="{{$data.sect_num[42]}}" class="span1"> </td>
+        <td>0.7<br>
+        </td>
+        <td>{{$data.class_num[42]}}
+        </td>
+        <td>{{$data.stud_num[42]}}
+        </td>
+        <td>{{$data.pay[42]}}
+        </td>
+        <td>{{$data.pay2[42]}}
+        </td>
+      </tr>
+      <tr>
+        <td>五年級<br>
+        </td>
+        <td>4:00<br>
+        </td>
+        <td>260<br>
+        </td>
+        <td>{{$data.dc[51]}}</td>
+        <td><input name="sect_num[51]" value="{{$data.sect_num[51]}}" class="span1"><br>
+        </td>
+        <td>0.7<br>
+        </td>
+        <td>{{$data.class_num[51]}}<br>
+        </td>
+        <td>{{$data.stud_num[51]}}
+        </td>
+        <td>{{$data.pay[51]}}
+        </td>
+        <td>{{$data.pay[51]}}
+        </td>
+      </tr>
+      <tr  >
+        <td><br>
+        </td>
+        <td>5:30<br>
+        </td>
+        <td>400<br>
+        </td>
+        <td>{{$data.dc[52]}}
+        </td>
+        <td><input name="sect_num[52]" value="{{$data.sect_num[52]}}" class="span1"> </td>
+        <td>0.7<br>
+        </td>
+        <td>{{$data.class_num[52]}}
+        </td>
+        <td>{{$data.stud_num[52]}}
+        </td>
+        <td>{{$data.pay[52]}}
+        </td>
+        <td>{{$data.pay2[52]}}
+        </td>
+      </tr>
+      <tr>
+        <td>六年級<br>
+        </td>
+        <td>4:00<br>
+        </td>
+        <td>260<br>
+        </td>
+        <td>{{$data.dc[61]}}</td>
+        <td><input name="sect_num[61]" value="{{$data.sect_num[61]}}" class="span1"><br>
+        </td>
+        <td>0.7<br>
+        </td>
+        <td>{{$data.class_num[61]}}<br>
+        </td>
+        <td>{{$data.stud_num[61]}}
+        </td>
+        <td>{{$data.pay[61]}}
+        </td>
+        <td>{{$data.pay[61]}}
+        </td>
+      </tr>
+      <tr >
+        <td><br>
+        </td>
+        <td>5:30<br>
+        </td>
+        <td>400<br>
+        </td>
+        <td>{{$data.dc[62]}}
+        </td>
+        <td><input name="sect_num[62]" value="{{$data.sect_num[62]}}" class="span1"> </td>
+        <td>0.7<br>
+        </td>
+        <td>{{$data.class_num[62]}}
+        </td>
+        <td>{{$data.stud_num[62]}}
+        </td>
+        <td>{{$data.pay[62]}}
+        </td>
+        <td>{{$data.pay2[62]}}
+        </td>
+      </tr>      
+    </tbody>
+  </table>
+{{/if}}  
+  <br>
+<input name="oldmonth" type="hidden" value="{{$data.month_id}}" >
+</form>
+
+<form method="post" action="signAdmin.php" name="">
+  <div >
+  新增一期： <input name="month_doc" value="" class="span2" placeholder="學年度期別" >
+  
+  報名截止：<input   type="text" name="deadline"  id="datepicker"  class="span2" placeholder="指定截止日期" >
+  <input type="checkbox" checked="checked" name="oldmonth" value="{{$data.month_id}}" >匯入前一期{{$data.month_id}} 
+  <input name="ADD" value="新增一期" type="submit"  class="btn btn-primary">
+  </div>
+</form>  
+{{include file="$SFS_TEMPLATE/footer.tpl"}}

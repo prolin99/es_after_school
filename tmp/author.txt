@@ -1,0 +1,7 @@
+team_sign_up - 課後照顧
+原創作者：林朝敏
+
+prolin@tn.edu.tw 2004-09-21
+//$Id: author.txt,v 1.1.2.1 2004/10/22 15:26:46 prolin Exp $
+
+提供課後照顧報名。

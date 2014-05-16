@@ -1,0 +1,4 @@
+序號{{$row_i++}},年級,原班,姓名, 班別,時段, 減免,費用, 備註,動作,
+ {{foreach  key=key item=list   from= $user }}
+        {{$row_i++}}, {{$list.grade_year}} , {{$data.class_name_arr[$list.class_id_base]}} , {{$list.stud_name}} , {{$DEF.SEL_CLASS[$list.class_id]}}  , {{$DEF.time_mode[$list.time_mode]}} , {{$DEF.spec_array[$list.spec]}} ,{{$data.pay_sum[$list.grade_year][$list.time_mode] }}	,{{$list.ps}}  ,
+{{/foreach }}
