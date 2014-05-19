@@ -23,7 +23,7 @@
  修改截止日： <input type='text'  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"  name='new_deadline'  class='span2'   value="<{$month_data.deadline}>" placeholder="指定截止日期">
 <button type="submit" class="btn btn-success" name='SetDate' value='SetDate' >延期</button>
 <button type="submit" class="btn btn-primary" name='calc' value='calc' title='寫入後才會公佈收費金額'   onclick="return confirm('寫入後才會公佈出收費金額！')">計算、公佈</button>
- 
+<button type="submit" class="btn btn-danger" name='clear_old_data' value='clear_old_data' title='清除舊記錄'   onclick="return confirm('確定要刪除先前的期別報名資料！')">刪除舊期別</button> 
 <a class="btn btn-success" href="export.php?mid=<{$month_data.month_id}>" >匯出全部名單</a>
 
   <table class="table table-bordered table-hover table-striped">

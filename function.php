@@ -54,7 +54,7 @@ $AS_SET['stud_down']=   preg_split( "/[,]/" , $xoopsModuleConfig['es_as_studs_do
 
 
 //取得最近的期別
-function get_month_list( $month){
+function get_month_list( ){
 	global  $xoopsDB ;
  
 		$sql =  "  SELECT   *  ,( deadline >=  (NOW() - INTERVAL 1 DAY ) ) as cando   FROM " . $xoopsDB->prefix("afdb_month") . "  order by month_id DESC  LIMIT 0 , 1   " ;
@@ -223,7 +223,9 @@ function do_calc(	$data , $stud_count ,$save_fg = false ) {
 		$class_num= $stud_count[$k]['class_num'] ;
 		
 		//計算折扣數
-		$stud_in_class  = ceil($stud_num  / $class_num )   ;
+		$stud_in_class=0 ;
+		if  ( $class_num)
+			$stud_in_class  = ceil($stud_num  / $class_num )   ;
 		$stud_dc = $AS_SET['stud_down'][$stud_in_class] ;
 		if ($stud_dc==0)  $stud_dc =1 ;
 		$data[$k]['stud_dc']= $stud_dc ;
@@ -253,4 +255,19 @@ function do_calc(	$data , $stud_count ,$save_fg = false ) {
 	}	
 	return $data ;
 	
+}
+
+function clear_data($month_id) {
+	//刪除  $month_id 之前的資料。
+	global  $xoopsDB ;
+ 
+		$sql =  "  DELETE       FROM " . $xoopsDB->prefix("afdb_grade") . "  WHERE `month_id` < '$month_id'    " ;
+ 		$result = $xoopsDB->query($sql)  or die($sql."<br>". mysql_error()); 			
+
+		$sql =  "  DELETE       FROM " . $xoopsDB->prefix("afdb_month") . "  WHERE `month_id` < '$month_id'    " ;
+ 		$result = $xoopsDB->query($sql)  or die($sql."<br>". mysql_error()); 			
+ 		
+		$sql =  "  DELETE       FROM " . $xoopsDB->prefix("afdb_sign") . "  WHERE `month_id` < '$month_id'    " ;
+ 		$result = $xoopsDB->query($sql)  or die($sql."<br>". mysql_error()); 			 		
+ 
 }

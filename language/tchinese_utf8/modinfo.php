@@ -11,10 +11,10 @@ define("_MI_ESAFTER_CREDITS","prolin");
 define("_MI_ESAFTER_DESC","課後照顧報名、費用計算");
 
 define("_MI_ESAFTER_CONFIG_TITLE1","減免身份");
-define("_MI_ESAFTER_CONFIG_DESC1","申請補助使用，分行設定");
+define("_MI_ESAFTER_CONFIG_DESC1","提供申請補助使用。分行設定");
  
 define("_MI_ESAFTER_CONFIG_TITLE2","時段");
-define("_MI_ESAFTER_CONFIG_DESC2","時段,金額，以逗號分隔後面時段會併前面時段節數。(例 4:00,260;5:30,400)");
+define("_MI_ESAFTER_CONFIG_DESC2","時段,金額，以逗號分隔。學生參加後面時段會一併加總前面時段的費用。(例 4:00,260;5:30,400)");
 
 define("_MI_ESAFTER_CONFIG_TITLE3","年級");
 define("_MI_ESAFTER_CONFIG_DESC3","開辦年級，以逗號分隔(3,4,5,6)");
