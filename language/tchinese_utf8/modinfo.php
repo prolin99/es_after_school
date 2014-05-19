@@ -20,7 +20,7 @@ define("_MI_ESAFTER_CONFIG_TITLE3","年級");
 define("_MI_ESAFTER_CONFIG_DESC3","開辦年級，以逗號分隔(3,4,5,6)");
 
 define("_MI_ESAFTER_CONFIG_TITLE4","班別");
-define("_MI_ESAFTER_CONFIG_DESC4","開辦班別，以逗號分隔(如A,B)");
+define("_MI_ESAFTER_CONFIG_DESC4","預計開辦班別，以逗號分隔(如A,B)");
 
 define("_MI_ESAFTER_CONFIG_TITLE5","鐘點費佔成數");
 define("_MI_ESAFTER_CONFIG_DESC5","預設鐘點費佔成數(0.7)");

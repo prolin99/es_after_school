@@ -43,24 +43,28 @@ if ($_POST['ADD']) {
 
 	}
  
+ 
  	
 	//匯入上期資料
 	if ($_POST['oldmonth']  and  ( $month_id <> $_POST['oldmonth'] )  ) {
+ 
 		//取得全部學生名冊
-		$sql=" select  * from  " .  $xoopsDB->prefix("afdb_sign") . "   where  month_id = '$_POST[oldmonth]'  order by class_id_base	 ";
+		$sql=" select  * from  " .  $xoopsDB->prefix("afdb_sign") . "   where  month_id = '{$_POST[oldmonth]}'    ";
+ 
 		$result = $xoopsDB->query($sql) or die($sql."<br>". mysql_error()); 		
 	
-		while ($row = $recordSet->FetchRow() ) {
+		while($row=$xoopsDB->fetchArray($result)){
 				//$user[] = $row ;
 				$name = addslashes($row[stud_name]) ; 
-				$sql = " insert into  " .  $xoopsDB->prefix("afdb_sign") . "  ( id , month_id , grade_year , class_id , class_id_base , stud_name  , stud_sex , time_mode, spec , ps )
-                       	   		values ('' , '$month_id'  ,  '$row[grade_year]'  , '$row[class_id]' , '$row[class_id_base]' , '$name ' , $row[stud_sex] , '$row[time_mode]' , '$row[spec]' , '$row[ps]' ) " ;
-           
-              			$result = $xoopsDB->query($sql) or die($sql."<br>". mysql_error()); 		
+				$sql2 = " insert into  " .  $xoopsDB->prefix("afdb_sign") . "  ( id , month_id , grade_year , class_id , class_id_base , stud_name  , stud_sex , time_mode, spec , ps )
+                       	   		values ('' , '$month_id'  ,  '{$row[grade_year]}'  , '{$row[class_id]}' , '{$row[class_id_base]}' , '$name ' , '{$row[stud_sex]}' , '{$row[time_mode]}' , '{$row[spec]}' , '{$row[ps]}' ) " ;
+ 
+              			$result2 = $xoopsDB->query($sql2) or die($sql2."<br>". mysql_error()); 		
 		} 
 	
 		
 	}	
+
  	
 
 }
