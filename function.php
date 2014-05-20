@@ -184,7 +184,7 @@ Function get_class_teacher_list() {
 	return $class_id  ;
 }	
 
-function get_my_class_id($uid   ) {
+function get_my_class_id($uid =0   ) {
 	//取得$uid 的任教班級
 	global  $xoopsDB ,$xoopsUser  ;
 	if (!$uid)  

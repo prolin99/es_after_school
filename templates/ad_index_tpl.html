@@ -42,11 +42,15 @@
       </tr>
       <{foreach  key=key item=grade   from=$data }>
       <tr>
-        <td><{$grade.grade_year}>年級<br>
+        <td><{if ($grade.time_mode==1) }>
+        	<{$grade.grade_year}>年級 
+        <{else}>
+  
+        <{/if}>
         </td>
-        <td><{$AS_SET.time[$grade.time_mode]}><br>
+        <td><{$AS_SET.time[$grade.time_mode]}> 
         </td>
-        <td><span id='cost_<{$grade.grade_year}>_<{$grade.time_mode}>' data='<{$grade.cost}>'><{$grade.cost}></span><br>
+        <td><span id='cost_<{$grade.grade_year}>_<{$grade.time_mode}>' data='<{$grade.cost}>'><{$grade.cost}></span> 
         </td>
         <td><span id='sdc_<{$grade.grade_year}>_<{$grade.time_mode}>' data='<{$grade.stud_dc}>'><{$grade.stud_dc}></span></td>
         <td  class='success'><input  id='sect_<{$grade.grade_year}>_<{$grade.time_mode}>' data='<{$grade.cost}>_<{$grade.stud_dc}>_<{$grade.teacher_dc}>_<{$grade.class_num}>_<{$grade.stud_num}>'   name="sect_num[<{$grade.grade_year}><{$grade.time_mode}>]" value="<{$grade.sect_num}>" class="span1 sect_num ">
