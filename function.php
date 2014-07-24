@@ -14,7 +14,7 @@ include_once XOOPS_ROOT_PATH."/modules/tadtools/tad_function.php";
 /********************* 自訂函數 *********************/
 //取得參數 
 //身份
-$decrease_set_list  = preg_split( "/[\r\n]/" , $xoopsModuleConfig['es_as_posit'] ) ;
+$decrease_set_list  = preg_split( "/\r\n/" , $xoopsModuleConfig['es_as_posit'] ) ;
 //1.低收入戶\n2.身心障礙\n3. 原住民\n4-1 社會局公所證明\n4-2 失業證明\n4-3 重大傷病證明\n4-4 導師證明
 $i=0 ;
 foreach ($decrease_set_list as  $k =>$v)  {

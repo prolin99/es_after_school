@@ -8,7 +8,7 @@
 //---基本設定---//
 
 $modversion['name'] ='課後照顧報名';				//模組名稱
-$modversion['version']	= '0.3';				//模組版次
+$modversion['version']	= '0.4';				//模組版次
 $modversion['author'] = 'prolin(prolin@tn.edu.tw)';		//模組作者
 $modversion['description'] ='課後照顧報名、費用計算';			//模組說明
 $modversion['credits']	= 'prolin';				//模組授權者
@@ -64,7 +64,7 @@ $modversion['config'][$i]['title']   = '_MI_ESAFTER_CONFIG_TITLE1';
 $modversion['config'][$i]['description'] = '_MI_ESAFTER_CONFIG_DESC1';
 $modversion['config'][$i]['formtype']    = 'textarea';
 $modversion['config'][$i]['valuetype']   = 'text';
-$modversion['config'][$i]['default'] ="0.無\n1.低收入戶\n2.身心障礙\n3. 原住民\n4-1 社會局公所證明\n4-2 失業證明\n4-3 重大傷病證明\n4-4 導師證明" ;
+$modversion['config'][$i]['default'] ="0.無\r\n1.低收入戶\r\n2.身心障礙\r\n3. 原住民\r\n4-1 社會局公所證明\r\n4-2 失業證明\r\n4-3 重大傷病證明\r\n4-4 導師證明" ;
 
 $i++ ;
 $modversion['config'][$i]['name'] = 'es_as_timesect';

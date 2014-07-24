@@ -4,7 +4,7 @@
 
 <div class="row-fluid">
 <h3>現在期別：<{$data.month_data.monthdoc}></h3>
- <{if  ($data.month_data.cando) }>
+ <{if  (($data.month_data.cando>0) and ( $data.month_data.month_id ) ) }>
  <span class="label label-success">尚在填報期間！報名截止：<{$data.month_data.deadline}></span>
   <a class="btn btn-primary" href="export.php?mid=<{$data.month_data.month_id}>" >點名冊</a>
  <{else}>
@@ -13,15 +13,19 @@
  <{/if}>
 <{if ($data.admin)}>
 <form method="post" action="" name="main">
-班級:<{html_options name='admin_class_id' options=$data.class_list selected=$data.sel_class class='span2' onchange="submit();"}>
-
+<div class="row-fluid">
+<div class="span4">
+班級:<{html_options name='admin_class_id' options=$data.class_list selected=$data.sel_class  onchange="submit();"}>
+</div>
+<div class="span3 alert alert-error" title='無時限'>管理者權限</div>
+</div>
 </form>
 <{else}>
 	<h2><{$data.class_name_arr[$data.sel_class]  }></h2>
 <{/if}>
 
 
-<{if ($data.month_data.cando)}>
+<{if ($data.month_data.cando and $data.month_data.month_id )}>
 <form method="post" action="index.php" name="form2">
 學生:<select name="sel_stud" class="span2"  >
 	<{foreach  key=key item=list   from= $data.class_stud }>

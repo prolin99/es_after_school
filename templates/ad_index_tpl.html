@@ -149,14 +149,16 @@ $(function() {
  <{if  (!$month_data.cando) }>
  <div class="row-fluid">
 <form method="post" action="index.php" name="">
-  <div >
-  新增一期： <input name="month_doc" value="" class="span2" placeholder="學年度期別" >
+<fieldset>
+		<legend>新增一期</legend>
+
+  期別代號： <input name="month_doc" value="" class="span2" placeholder="(例:10301)" title="期別代號(自訂)">
   
-  報名截止：
+  報名截止日：
   <input type='text'  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"  name='deadline'  class='span2'   value="<{$p_data.edit_list.end_date}>" placeholder="指定截止日期">
   <input type="checkbox" checked="checked" name="oldmonth" value="<{$month_data.month_id}>" >匯入前一期 
   <button type="submit" class="btn btn-primary" name='ADD' value='ADD' >新增一期</button>
-  </div>
+  </fieldset>
 </form> 
 </div>    
  <{/if}> 
