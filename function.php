@@ -137,7 +137,7 @@ function get_class_students( $class_id , $mode='class') {
 		$result = $xoopsDB->query($sql) or redirect_header($_SERVER['PHP_SELF'],3, mysql_error());
 		while($stud=$xoopsDB->fetchArray($result)){
  
-			$data[$stud['tn_id'] ]=$stud ;
+			$data[$stud['stud_id'] ]=$stud ;
 	
 		}		
 	return $data ;		
