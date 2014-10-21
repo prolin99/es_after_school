@@ -13,7 +13,10 @@ include_once XOOPS_ROOT_PATH."/header.php";
 
 
 /*-----------function區--------------*/
- 
+//取得中文班名
+$data['class_list_c'] = es_class_name_list_c('long')  ;  
+$data['class_list_c_s'] = es_class_name_list_c()  ;  
+
 $data['month_data'] = get_month_list() ;
 $month_id = $data['month_data']['month_id'] ;
 
@@ -67,7 +70,8 @@ $class_id = get_my_class_id() ;
 	//取得報名學生資料
  	$data['sign_studs'] = get_as_signs($month_id , $class_id  , $grade_data ,$isAdmin) ;
 	
-	
+	//預設為最後一個時段
+	$data['def_time_mode']= count($AS_SET['time']) ;
 
  
 /*-----------秀出結果區--------------*/

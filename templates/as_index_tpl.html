@@ -15,13 +15,13 @@
 <form method="post" action="" name="main">
 <div class="row-fluid">
 <div class="span4">
-班級:<{html_options name='admin_class_id' options=$data.class_list selected=$data.sel_class  onchange="submit();"}>
+班級:<{html_options name='admin_class_id' options=$data.class_list_c  selected=$data.sel_class  onchange="submit();"}>
 </div>
 <div class="span3 alert alert-error" title='無時限'>管理者權限</div>
 </div>
 </form>
 <{else}>
-	<h2><{$data.class_name_arr[$data.sel_class]  }></h2>
+	<h2><{$data.class_list_c[$data.sel_class]  }></h2>
 <{/if}>
 
 
@@ -32,7 +32,7 @@
 		<option  value="<{$list.name}>"><{$list.class_sit_num}>.<{$list.name}></option>
 	<{/foreach}>	
 </select> 
-時段：<{html_options name='time_mode' options=$AS_SET.time  class='span2' }>
+時段：<{html_options name='time_mode' options=$AS_SET.time  class='span2'  selected=$data.def_time_mode }>
 班別<{html_options name='class_id_set' options=$AS_SET.class_set  class='span1' }>
  
 減免: <{html_options name='spec' options=$AS_SET.decrease_set  class='span2' }>
@@ -63,7 +63,7 @@
 
 <div class="row-fluid" id="div_<{$list.id}>_<{$list.class_id_base}>_<{$row_i}>" >
         <span class='span1'  id="grade_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.grade_year}>"><span class="badge badge-success"><{$row_i++}></span><{$list.grade_year}> </span>
-        <span class='span1'  id="classidbase_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.class_id_base}>"> <{$list.class_id_base}> </span>
+        <span class='span1'  id="classidbase_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.class_id_base}>"> <{$data.class_list_c_s[$list.class_id_base]}> </span>
         <span class='span2' id="name_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.stud_name}>"><span class="edit" ><i class="icon-pencil"></i></span>  <{$list.stud_name}> <span class="del" ><i class="icon-trash"></i></span> </span>
 	<span class='span1' id="classid_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.class_id}>"> <{$AS_SET.class_set[$list.class_id]}>  </span>
 	<span class='span1' id="time_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.time_mode}>"> <{$AS_SET.time[$list.time_mode]}> </span>

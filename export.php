@@ -11,6 +11,8 @@ include_once "header.php";
 include_once "../tadtools/PHPExcel.php";
 require_once '../tadtools/PHPExcel/IOFactory.php';    
 /*-----------function區--------------*/
+//取得中文班名
+$class_list_c = es_class_name_list_c('long')  ;  
 
 function  newpage($page ,$title ){
 	global $objPHPExcel  ;
@@ -86,7 +88,7 @@ if  ($_GET['mid']) {
             		->setCellValue('B'.$row , $stud['grade_year'])
             		->setCellValue('C'.$row, $AS_SET['time'][$stud['time_mode']])
             		->setCellValue('D'.$row, $AS_SET['class_set'][$stud['class_id']])
-            		->setCellValue('E'.$row ,$stud['class_id_base'])
+            		->setCellValue('E'.$row ,$class_list_c[$stud['class_id_base']])
             		->setCellValue('F'.$row, $stud['stud_name'])
             		;
   
