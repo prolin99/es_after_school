@@ -40,7 +40,7 @@ $modversion['tables'][3] = "afdb_grade";
 $modversion['hasAdmin'] = 1;
 $modversion['adminindex'] = "admin/index.php";
 $modversion['adminmenu'] = "admin/menu.php";
- 
+
 //---使用者主選單設定---//
 $modversion['hasMain'] = 1;
 
@@ -51,10 +51,18 @@ $i=1;
 $modversion['templates'][$i]['file'] = 'ad_index_tpl.html';
 $modversion['templates'][$i]['description'] = 'ad_index_tpl.html';
 $i++ ;
+$modversion['templates'][$i]['file'] = 'ad_index_tpl_b3.html';
+$modversion['templates'][$i]['description'] = 'ad_index_tpl_b3.html';
+
+$i++ ;
 $modversion['templates'][$i]['file'] = 'as_index_tpl.html';
 $modversion['templates'][$i]['description'] = 'as_index_tpl.html';
 
- 
+$i++ ;
+$modversion['templates'][$i]['file'] = 'as_index_tpl_b3.html';
+$modversion['templates'][$i]['description'] = 'as_index_tpl_b3.html';
+
+
 $i=0 ;
 //偏好設定
 
