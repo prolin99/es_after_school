@@ -25,7 +25,7 @@ if ($_POST['ADD']) {
 	$deadline=$_POST['deadline'] ;
 	$sql = " insert into  " . $xoopsDB->prefix("afdb_month") . "  ( monthdoc ,  deadline )
 		values ( '$month_doc' , '$deadline'  ) " ;
-	$result = $xoopsDB->query($sql) or die($sql."<br>". mysql_error()); 		
+	$result = $xoopsDB->query($sql) or die($sql."<br>". $xoopsDB->error()); 		
 	
 	//取得 month_ID 
 	$month_id = $xoopsDB->getInsertId() ;
@@ -38,7 +38,7 @@ if ($_POST['ADD']) {
 			$sql = " insert into " . $xoopsDB->prefix("afdb_grade") . "  (month_id , grade_year ,time_mode,cost,stud_dc ,sect_num ,teacher_dc ,class_num ,stud_num ,pay ,pay_sum  )
 				values ('$month_id'  , '$y' , '$tk', '$time_cost'  ,0, 0 ,'{$AS_SET['dc_set']}',0,0,0,0    ) " ;
 			//echo $sqlstr .'<br>' ;
-			$result = $xoopsDB->query($sql) or die($sql."<br>". mysql_error()); 		
+			$result = $xoopsDB->query($sql) or die($sql."<br>". $xoopsDB->error()); 		
 		}	
 
 	}
@@ -51,7 +51,7 @@ if ($_POST['ADD']) {
 		//取得全部學生名冊
 		$sql=" select  * from  " .  $xoopsDB->prefix("afdb_sign") . "   where  month_id = '{$_POST[oldmonth]}'    ";
  
-		$result = $xoopsDB->query($sql) or die($sql."<br>". mysql_error()); 		
+		$result = $xoopsDB->query($sql) or die($sql."<br>". $xoopsDB->error()); 		
 	
 		while($row=$xoopsDB->fetchArray($result)){
 				//$user[] = $row ;
@@ -59,7 +59,7 @@ if ($_POST['ADD']) {
 				$sql2 = " insert into  " .  $xoopsDB->prefix("afdb_sign") . "  ( id , month_id , grade_year , class_id , class_id_base , stud_name  , stud_sex , time_mode, spec , ps )
                        	   		values ('' , '$month_id'  ,  '{$row[grade_year]}'  , '{$row[class_id]}' , '{$row[class_id_base]}' , '$name ' , '{$row[stud_sex]}' , '{$row[time_mode]}' , '{$row[spec]}' , '{$row[ps]}' ) " ;
  
-              			$result2 = $xoopsDB->query($sql2) or die($sql2."<br>". mysql_error()); 		
+              			$result2 = $xoopsDB->query($sql2) or die($sql2."<br>". $xoopsDB->error()); 		
 		} 
 	
 		
@@ -73,7 +73,7 @@ if ($_POST['SetDate']) {
 	//更改填報截止日期
 	$now = $_POST['new_deadline'] ;
 	$sql = " update   " . $xoopsDB->prefix("afdb_month") . "  set  deadline =  '$now' where  month_id = '$_POST[oldmonth]' " ;
- 	$result = $xoopsDB->query($sql) or die($sql."<br>". mysql_error()); 		
+ 	$result = $xoopsDB->query($sql) or die($sql."<br>". $xoopsDB->error()); 		
 	
 }	
 

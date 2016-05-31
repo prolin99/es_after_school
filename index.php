@@ -29,9 +29,9 @@ if ($_POST['ADD']  and $_POST['sel_stud'] ) {
 	//新增一筆
 	$grade_year = substr($_POST['OCLASS_ID'] ,0,1) ;
 	$sql = " insert into " . $xoopsDB->prefix("afdb_sign") ."  ( id , month_id , grade_year , class_id , class_id_base , stud_name	  , stud_sex , time_mode, spec , ps )
-                       	   values ('' , '$month_id'  ,  $grade_year  ,  $_POST[class_id_set] , $_POST[OCLASS_ID]  ,'$_POST[sel_stud] ' ,0 , $_POST[time_mode] ,'$_POST[spec]' , '$_POST[ps]'  ) " ;
+                       	   values ('0' , '$month_id'  ,  $grade_year  ,  $_POST[class_id_set] , $_POST[OCLASS_ID]  ,'$_POST[sel_stud] ' ,0 , $_POST[time_mode] ,'$_POST[spec]' , '$_POST[ps]'  ) " ;
 
-        $result = $xoopsDB->query($sql)  or die($sql."<br>". mysql_error());
+        $result = $xoopsDB->query($sql)  or die($sql."<br>". $xoopsDB->error());
 
 }
 

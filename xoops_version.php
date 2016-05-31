@@ -8,7 +8,7 @@
 //---基本設定---//
 
 $modversion['name'] = '課後照顧報名';                //模組名稱
-$modversion['version'] = '0.7';                //模組版次
+$modversion['version'] = '0.8';                //模組版次
 $modversion['author'] = 'prolin(prolin@tn.edu.tw)';        //模組作者
 $modversion['description'] = '課後照顧報名、費用計算';            //模組說明
 $modversion['credits'] = 'prolin';                //模組授權者
@@ -19,7 +19,7 @@ $modversion['dirname'] = basename(dirname(__FILE__));        //模組目錄名�
 
 //---模組狀態資訊---//
 //$modversion['status_version'] = '0.8';
-$modversion['release_date'] = '2014-05-20';
+$modversion['release_date'] = '2016-06-01';
 $modversion['module_website_url'] = 'https://github.com/prolin99/es_after_school';
 $modversion['module_website_name'] = 'prolin';
 $modversion['module_status'] = 'release';
