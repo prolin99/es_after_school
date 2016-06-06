@@ -96,13 +96,20 @@ function get_month_grade($month_id) {
 function get_month_sign_team($month_id) {
 	global  $xoopsDB ,$AS_SET ;
 
-		$sql =  "  SELECT  month_id ,grade_year,time_mode ,  count(*) as cc  FROM " . $xoopsDB->prefix("afdb_sign") . "  WHERE `month_id` = '$month_id'  group  by month_id ,grade_year,time_mode   " ;
+		$sql =  "  SELECT  month_id ,grade_year,time_mode ,  count(*) as cc  FROM " . $xoopsDB->prefix("afdb_sign") . "  WHERE `month_id` = '$month_id'  group  by month_id ,grade_year,time_mode   order by  time_mode DESC " ;
 
 		$result = $xoopsDB->query($sql)  or die($sql."<br>". $xoopsDB->error());
 
 		while($row=$xoopsDB->fetchArray($result)){
+            //開班數
  			$row['class_num'] = floor($row['cc']  /$AS_SET['studs'] )  +1 ;
  			$k= $row['grade_year']. '_' .$row['time_mode'];
+            //比較早時段人數 要加入 後面時段者
+            $k2 =  $row['grade_year']. '_' .( $row['time_mode']+1);
+            if  ( $data[$k2]['cc']>0 ) {
+                $row['stud_num_show'] = " {$row['cc']}  + {$data[$k2]['cc']} " ;
+                $row['cc'] += $data[$k2]['cc'] ;
+            }
 
 			$data[$k] = $row;
 
@@ -223,6 +230,7 @@ function do_calc(	$data , $stud_count ,$save_fg = false ) {
 		//人數
 		$data[$k]['stud_num'] =$stud_count[$k]['cc'] ;
 		$stud_num= $stud_count[$k]['cc'] +0;
+        $data[$k]['stud_num_show']= $stud_count[$k]['stud_num_show'] ;
 
 		//班數
 		$data[$k]['class_num'] = $stud_count[$k]['class_num'] ;
@@ -240,7 +248,7 @@ function do_calc(	$data , $stud_count ,$save_fg = false ) {
 		$pay =0 ;
 		if ($sect_num) {
 			//計算式 : 鐘點費×鐘點折數×每期節數÷鐘點費佔成數×班級數÷學生數
-            if ($stud_num>0)
+            if ($stud_num>0 and $sect_num>0)
 			     $pay=floor($cost *  $stud_dc *$sect_num /$teacher_dc *$class_num /$stud_num)  ;
             else
                 $pay=0 ;
