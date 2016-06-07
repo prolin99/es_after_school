@@ -35,10 +35,12 @@
 		<option  value="<{$list.name}>"><{$list.class_sit_num}>.<{$list.name}></option>
 	<{/foreach}>
   </select>
+  <label for="time_mode">年段班：</label>
+    <{html_options name='grade_year'   class='form-control'  options=$AS_SET.grade_set    selected=$data.grade_year title='人數太少，才年段合併'}>
   <label for="time_mode">時段：</label>
-    <{html_options name='time_mode'   class='form-control'  options=$AS_SET.time    selected=$data.def_time_mode }>
+    <{html_options name='time_mode'   class='form-control'  options=$AS_SET.time    selected=$data.def_time_mode  }>
     <label for="class_id_set">班別</label>
-    <{html_options name='class_id_set'  class='form-control'  options=$AS_SET.class_set    }>
+    <{html_options name='class_id_set'  class='form-control'  options=$AS_SET.class_set  title='開多班才選擇'   }>
 
     <label for="spec">減免</label>
     <{html_options name='spec'   class='form-control'   options=$AS_SET.decrease_set   }>
@@ -55,7 +57,7 @@
 <{$row_i++}>
  <div class="row" >
 
-        <span class='col-md-1 col-xs-1'>年級</span>
+        <span class='col-md-1 col-xs-1'>年段班</span>
         <span class='col-md-1 col-xs-1'>原班</span>
         <span class='col-md-2 col-xs-2'>姓名</span>
         <span class='col-md-1 col-xs-1'>班別</span>
@@ -68,8 +70,10 @@
 </div>
  <{foreach  key=key item=list   from= $data.sign_studs }>
 
-<div class="row" id="div_<{$list.id}>_<{$list.class_id_base}>_<{$row_i}>" >
-        <span class='col-md-1 col-xs-1'  id="grade_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.grade_year}>"><span class="badge badge-success"><{$row_i++}></span><{$list.grade_year}> </span>
+<div class="row <{if ($list.joinfg) }>bg-danger<{/if}>" id="div_<{$list.id}>_<{$list.class_id_base}>_<{$row_i}>" >
+        <span class='col-md-1 col-xs-2 '  id="grade_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.grade_year}>"  >
+            <span class="badge badge-success"><{$row_i++}></span><{$list.grade_year}>
+        </span>
         <span class='col-md-1 col-xs-1'  id="classidbase_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.class_id_base}>"> <{$data.class_list_c_s[$list.class_id_base]}> </span>
         <span class='col-md-2 col-xs-2' id="name_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.stud_name}>"><span class="edit" ><span class="glyphicon glyphicon-pencil"></span></span>  <{$list.stud_name}> <span class="del" ><span class="glyphicon glyphicon-trash"></span></span> </span>
       	<span class='col-md-1 col-xs-1' id="classid_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.class_id}>"> <{$AS_SET.class_set[$list.class_id]}>  </span>

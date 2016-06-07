@@ -15,7 +15,7 @@ include_once XOOPS_ROOT_PATH."/header.php";
 /*-----------執行動作判斷區----------*/
 if  ($_POST['id']     ) {
 	$sql = " UPDATE   "  . $xoopsDB->prefix("afdb_sign") .
-		" SET `class_id`='{$_POST['class_id_set']}' , `time_mode`='{$_POST['time_mode']}',`spec`='{$_POST['spec']}',`ps`='{$_POST['ps']}' WHERE id = '{$_POST['id']}'  " ;
+		" SET `grade_year`='{$_POST['grade_year']}'  , `class_id`='{$_POST['class_id_set']}' , `time_mode`='{$_POST['time_mode']}',`spec`='{$_POST['spec']}',`ps`='{$_POST['ps']}' WHERE id = '{$_POST['id']}'  " ;
 
  	$result = $xoopsDB->query($sql) ;
 
@@ -26,7 +26,7 @@ if  ($_POST['id']     ) {
 	     	while($row=$xoopsDB->fetchArray($result)){
 			$data=$row ;
 		}
-     if ($_SESSION['bootstrap'] == '3') {
+ 
 			 	$main ="
 				 <span class='col-md-1 col-xs-1'><span class='badge badge-success'>{$_POST['row_i']}</span>{$data['grade_year']} </span>
 				 <span class='col-md-1 col-xs-1'> {$data['class_id_base']} </span>
@@ -39,20 +39,6 @@ if  ($_POST['id']     ) {
 				 <span class='col-md-2  col-xs-2'> {$data['ps']}  </span>
 				 " ;
 
-		}else {
-			$main ="
-					<span class='span1'><span class='badge badge-success'>{$_POST['row_i']}</span>{$data['grade_year']} </span>
-					<span class='span1'> {$data['class_id_base']} </span>
-					<span class='span2'><span class='edit' ><i class='icon-pencil'></span></span>  {$data['stud_name']} <span class='del' >
-					<span class='icon-trash'></span></span> </span>
-					<span class='span1'>" . $AS_SET['class_set'][$data['class_id']]  ." </span>
-					<span class='span1'>". $AS_SET['time'][$data['time_mode']] ." </span>
-					<span class='span2'>" .$AS_SET['decrease_set'][$data['spec']] ."  </span>
-					<span class='span1'>" . $datapay_sum[$grade][$time] 	." </span>
-					<span class='span2'> {$data['ps']}  </span>
-					" ;
-
-		}
 
 	echo $main ;
 

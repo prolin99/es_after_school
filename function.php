@@ -41,7 +41,11 @@ foreach ($time_set_def as $t => $v) {
 
 
 //開課年級
-$AS_SET['grade_set']= preg_split( "/[,;]/" , $xoopsModuleConfig['es_as_grade'] ) ;
+$grade_set= preg_split( "/[,;]/" , $xoopsModuleConfig['es_as_grade'] ) ;
+foreach ($grade_set as $t => $v) {
+    $AS_SET['grade_set'][$v]=$v  ;
+}
+
 
 //開班
 $AS_SET['class_set']= preg_split( "/[,]/" , $xoopsModuleConfig['es_as_class'] ) ;
@@ -171,8 +175,12 @@ function get_as_signs($month_id , $class_id , $grade_data , $isAdmin=0) {
 	while($row=$xoopsDB->fetchArray($result)){
 		$grade_time= $row['grade_year'] . '_' . $row['time_mode'] ;
 		//echo $grade_data[$grade_time]['pay_sum'] ;
-		 $row['pay_sum'] =  $grade_data[$grade_time]['pay_sum'] ;
-			$data[]=$row ;
+		$row['pay_sum'] =  $grade_data[$grade_time]['pay_sum'] ;
+        //如果年級和年段不同做提醒
+        if ($row['grade_year'] <> substr($row['class_id_base'],0,1))
+            $row['joinfg'] = true ;
+
+		$data[]=$row ;
 
 	}
 	return $data ;
