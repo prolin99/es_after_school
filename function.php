@@ -108,16 +108,25 @@ function get_month_sign_team($month_id) {
             //開班數
  			$row['class_num'] = floor($row['cc']  /$AS_SET['studs'] )  +1 ;
  			$k= $row['grade_year']. '_' .$row['time_mode'];
-            //比較早時段人數 要加入 後面時段者
-            $k2 =  $row['grade_year']. '_' .( $row['time_mode']+1);
-            if  ( $data[$k2]['cc']>0 ) {
-                $row['stud_num_show'] = " {$row['cc']}  + {$data[$k2]['cc']} " ;
-                $row['cc'] += $data[$k2]['cc'] ;
-            }
 
 			$data[$k] = $row;
 
 		}
+
+        foreach($data as $k =>$row ) {
+            if ( ( $row['cc']>0 ) and ($row['time_mode']>0) ) {
+                //比較早時段人數 要加入 後面時段者
+                $k_b =  $row['grade_year']. '_' .( $row['time_mode']-1);
+                $row_b = $row ;
+                $row_b['time_mode']= $row['time_mode']-1 ;
+                $row_b['cc'] = $data[$k_b]['cc']  + $row['cc'] +0 ;
+                $row_b['stud_num_show'] = " {$data[$k_b]['cc']}  + {$row['cc']} " ;
+                $row['cc'] += $data[$k2]['cc'] ;
+                $data[$k_b] = $row_b ;
+            }
+
+        }
+
 	return $data ;
 }
 
@@ -224,33 +233,33 @@ function get_my_class_id($uid =0   ) {
 function do_calc(	$data , $stud_count ,$save_fg = false ) {
 	global  $xoopsDB ,$AS_SET  ;
 	foreach ($data as $k => $v) {
-		$grade= $v['grade_year'] ;
-		$time_mode= $v['time_mode'] ;
-		$cost= $v['cost'] ;
-		$stud_dc= $v['stud_dc'] ;
-		$sect_num= $v['sect_num'] ;
-		$teacher_dc= $v['teacher_dc'] ;
+		$grade= $v['grade_year']+0 ;
+		$time_mode= $v['time_mode']+0 ;
+		$cost= $v['cost']+0 ;
+		$stud_dc= $v['stud_dc']+0 ;
+		$sect_num= $v['sect_num']+0 ;
+		$teacher_dc= $v['teacher_dc']+0 ;
 		$class_num= $v['class_num']+0 ;
 
 		$pay= $v['pay']+ 0 ;
 		$pay_sum= $v['pay_sum'] + 0;
 
 		//人數
-		$data[$k]['stud_num'] =$stud_count[$k]['cc'] ;
+		$data[$k]['stud_num'] =$stud_count[$k]['cc'] +0;
 		$stud_num= $stud_count[$k]['cc'] +0;
         $data[$k]['stud_num_show']= $stud_count[$k]['stud_num_show'] ;
 
 		//班數
-		$data[$k]['class_num'] = $stud_count[$k]['class_num'] ;
+		$data[$k]['class_num'] = $stud_count[$k]['class_num']+0 ;
 		$class_num= $stud_count[$k]['class_num'] +0;
 
 		//計算折扣數
 		$stud_in_class=0 ;
 		if  ( $class_num)
 			$stud_in_class  = ceil($stud_num  / $class_num )   ;
-		$stud_dc = $AS_SET['stud_down'][$stud_in_class] ;
+		$stud_dc = $AS_SET['stud_down'][$stud_in_class] +0;
 		if ($stud_dc==0)  $stud_dc =1 ;
-		$data[$k]['stud_dc']= $stud_dc ;
+		$data[$k]['stud_dc']= $stud_dc+0 ;
 
 		//計算
 		$pay =0 ;
@@ -272,7 +281,7 @@ function do_calc(	$data , $stud_count ,$save_fg = false ) {
 		//寫入資料庫中
 		if ($save_fg ) {
 			$sql = " update   " . $xoopsDB->prefix("afdb_grade")  .
-					"  set       stud_dc='$stud_dc' , class_num ='$class_num'  ,stud_num ='$stud_num' ,pay='$pay' , pay_sum='{$data[$k]['pay_sum']}'   where  id = '{$data[$k]['id']}'   " ;
+					"  set    stud_dc='$stud_dc' , class_num ='$class_num'  ,stud_num ='$stud_num' ,pay='$pay' , pay_sum='{$data[$k]['pay_sum']}'   where  id = '{$data[$k]['id']}'   " ;
 
  			$result = $xoopsDB->query($sql) or die($sql."<br>". $xoopsDB->error());
 		}
