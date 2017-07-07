@@ -4,6 +4,7 @@
 // 製作日期：2014-02-16
 // $Id:$
 // ------------------------------------------------------------------------- //
+include_once XOOPS_ROOT_PATH."/modules/tadtools/language/{$xoopsConfig['language']}/modinfo_common.php";
 
 define("_MI_ESAFTER_NAME","課後照顧");
 define("_MI_ESAFTER_AUTHOR","prolin (prolin@tn.edu.tw)");
@@ -12,7 +13,7 @@ define("_MI_ESAFTER_DESC","課後照顧報名、費用計算");
 
 define("_MI_ESAFTER_CONFIG_TITLE1","減免身份");
 define("_MI_ESAFTER_CONFIG_DESC1","提供申請補助使用。分行設定");
- 
+
 define("_MI_ESAFTER_CONFIG_TITLE2","時段");
 define("_MI_ESAFTER_CONFIG_DESC2","時段,金額，以逗號分隔。學生參加後面時段會一併加總前面時段的費用。(例 4:00,260;5:30,400)");
 

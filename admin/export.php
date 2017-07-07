@@ -5,8 +5,7 @@
 // $Id:$
 // ------------------------------------------------------------------------- //
 /*-----------引入檔案區--------------*/
-include_once "header_admin.php";
-
+include_once "header.php";
 include_once "../function.php";
 
 include_once "../../tadtools/PHPExcel.php";
@@ -72,7 +71,7 @@ if  ($_GET['mid']) {
 
 	}
 
-
+ob_clean();
 	//header('Content-Type: application/vnd.ms-excel');
 	header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 	header('Content-Disposition: attachment;filename=after'.date("mdHi").'.xlsx' );

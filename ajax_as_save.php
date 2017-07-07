@@ -7,7 +7,7 @@
 /*-----------引入檔案區--------------*/
 
 include_once "header.php";
-include_once XOOPS_ROOT_PATH."/header.php";
+//include_once XOOPS_ROOT_PATH."/header.php";
 
 /*-----------function區--------------*/
 
@@ -26,12 +26,12 @@ if  ($_POST['id']     ) {
 	     	while($row=$xoopsDB->fetchArray($result)){
 			$data=$row ;
 		}
- 
+
 			 	$main ="
 				 <span class='col-md-1 col-xs-1'><span class='badge badge-success'>{$_POST['row_i']}</span>{$data['grade_year']} </span>
 				 <span class='col-md-1 col-xs-1'> {$data['class_id_base']} </span>
-				 <span class='col-md-2  col-xs-2'><span class='edit' ><span class='glyphicon glyphicon-pencil'></span></span>  {$data['stud_name']}
-				 <span class='del' ><span class='glyphicon glyphicon-trash'></span></span> </span>
+				 <span class='col-md-2  col-xs-2'><span class='edit' ><span class='glyphicon glyphicon-pencil' title='修改'></span></span>  {$data['stud_name']}
+				 <span class='del' ><span class='glyphicon glyphicon-trash' title='刪除'></span></span> </span>
 				 <span class='col-md-1 col-xs-1'>" . $AS_SET['class_set'][$data['class_id']]  ." </span>
 				 <span class='col-md-1 col-xs-1'>". $AS_SET['time'][$data['time_mode']] ." </span>
 				 <span class='col-md-2  col-xs-2'>" .$AS_SET['decrease_set'][$data['spec']] ."  </span>

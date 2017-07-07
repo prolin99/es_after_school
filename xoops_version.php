@@ -8,7 +8,7 @@
 //---基本設定---//
 
 $modversion['name'] = '課後照顧報名';                //模組名稱
-$modversion['version'] = '0.8';                //模組版次
+$modversion['version'] = '0.9';                //模組版次
 $modversion['author'] = 'prolin(prolin@tn.edu.tw)';        //模組作者
 $modversion['description'] = '課後照顧報名、費用計算';            //模組說明
 $modversion['credits'] = 'prolin';                //模組授權者
@@ -52,12 +52,10 @@ $modversion['templates'][$i]['file'] = 'ad_index_tpl_b3.html';
 $modversion['templates'][$i]['description'] = 'ad_index_tpl_b3.html';
 
 ++$i;
-$modversion['templates'][$i]['file'] = 'as_index_tpl.html';
-$modversion['templates'][$i]['description'] = 'as_index_tpl.html';
+$modversion['templates'][$i]['file'] = 'as_index.tpl';
+$modversion['templates'][$i]['description'] = 'as_index.tpl';
 
-++$i;
-$modversion['templates'][$i]['file'] = 'as_index_tpl_b3.html';
-$modversion['templates'][$i]['description'] = 'as_index_tpl_b3.html';
+ 
 
 $i = 0;
 //偏好設定

@@ -6,9 +6,9 @@
 // ------------------------------------------------------------------------- //
 /*-----------引入檔案區--------------*/
 
-//$xoopsOption['template_main'] = "as_index_tpl.html";
+
 include_once "header.php";
-$xoopsOption['template_main'] = set_bootstrap("as_index_tpl.html");
+$xoopsOption['template_main'] = set_bootstrap("as_index.tpl");
 include_once XOOPS_ROOT_PATH."/header.php";
 
 
@@ -86,8 +86,7 @@ $class_id = get_my_class_id() ;
 
 /*-----------秀出結果區--------------*/
 $xoopsTpl->assign( "toolbar" , toolbar_bootstrap($interface_menu)) ;
-$xoopsTpl->assign( "bootstrap" , get_bootstrap()) ;
-$xoopsTpl->assign( "jquery" , get_jquery(true)) ;
+
 
 $xoopsTpl->assign( "AS_SET" , $AS_SET ) ;
 $xoopsTpl->assign( "data" , $data ) ;

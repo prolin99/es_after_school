@@ -7,7 +7,7 @@
  <span class="label label-success">尚在填報期間！報名截止：<{$data.month_data.deadline}></span>
   <a class="btn btn-primary" href="export.php?mid=<{$data.month_data.month_id}>" >點名冊</a>
  <{else}>
- <span class="label  label-inverse">填報時間結束！報名截止：<{$data.month_data.deadline}></span>
+ <span class="label  label-default">填報時間結束！報名截止：<{$data.month_data.deadline}></span>
  <a class="btn btn-primary" href="export.php?mid=<{$data.month_data.month_id}>" >點名冊</a>
  <{/if}>
 <{if ($data.admin)}>
@@ -75,7 +75,7 @@
             <span class="badge badge-success"><{$row_i++}></span><{$list.grade_year}>
         </span>
         <span class='col-md-1 col-xs-1'  id="classidbase_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.class_id_base}>"> <{$data.class_list_c_s[$list.class_id_base]}> </span>
-        <span class='col-md-2 col-xs-2' id="name_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.stud_name}>"><span class="edit" ><span class="glyphicon glyphicon-pencil"></span></span>  <{$list.stud_name}> <span class="del" ><span class="glyphicon glyphicon-trash"></span></span> </span>
+        <span class='col-md-2 col-xs-2' id="name_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.stud_name}>"><span class="edit" ><span class="glyphicon glyphicon-pencil" title="修改"></span></span>  <{$list.stud_name}> <span class="del" ><span class="glyphicon glyphicon-trash" title="刪除"></span></span> </span>
       	<span class='col-md-1 col-xs-1' id="classid_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.class_id}>"> <{$AS_SET.class_set[$list.class_id]}>  </span>
       	<span class='col-md-1 col-xs-1' id="time_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.time_mode}>"> <{$AS_SET.time[$list.time_mode]}> </span>
       	<span class='col-md-2 col-xs-2' id="spec_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.spec}>"><{$AS_SET.decrease_set[$list.spec]}>   </span>
