@@ -73,7 +73,7 @@ include_once "header.php";
 
 		$main .="<input type='hidden' value='{$data['id']}' name='id'></input>" ;
 		$main .="<input type='hidden' value='$row_i' name='row_i'></input>" ;
-		$main .= "<span class='save' title='儲存'><span class='glyphicon glyphicon-ok'></span></span>  " ;
+		$main .= "<span class='save' title='儲存'><span class='fa fa-ok'></span></span>  " ;
 
 
 
