@@ -4,8 +4,7 @@
 // 製作日期：2014-02-16
 // $Id:$
 // ------------------------------------------------------------------------- //
-include_once XOOPS_ROOT_PATH."/modules/tadtools/language/{$xoopsConfig['language']}/modinfo_common.php";
-
+xoops_loadLanguage('modinfo_common', 'tadtools');
 define("_MI_ESAFTER_NAME","課後照顧");
 define("_MI_ESAFTER_AUTHOR","prolin (prolin@tn.edu.tw)");
 define("_MI_ESAFTER_CREDITS","prolin");

@@ -5,10 +5,10 @@
 // $Id:$
 // ------------------------------------------------------------------------- //
 /*-----------引入檔案區--------------*/
-
+use XoopsModules\Tadtools\Utility;
 
 include_once "header.php";
-$xoopsOption['template_main'] = set_bootstrap("as_index.tpl");
+$xoopsOption['template_main'] = "as_index.tpl";
 include_once XOOPS_ROOT_PATH."/header.php";
 
 
@@ -85,7 +85,7 @@ $class_id = get_my_class_id() ;
 
 
 /*-----------秀出結果區--------------*/
-$xoopsTpl->assign( "toolbar" , toolbar_bootstrap($interface_menu)) ;
+$xoopsTpl->assign( "toolbar" , Utility::toolbar_bootstrap($interface_menu)) ;
 
 
 $xoopsTpl->assign( "AS_SET" , $AS_SET ) ;
