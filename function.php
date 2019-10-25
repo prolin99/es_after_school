@@ -201,7 +201,7 @@ function get_as_signs_join_charge($month_id , $class_id , $grade_data , $isAdmin
         "  order by a.grade_year, a.class_id, a.time_mode, a.class_id_base , a.stud_name	 ";
 	else
 		$sql=" select  * from  " . $xoopsDB->prefix("afdb_sign")  ."  where  month_id = '$month_id'  and class_id_base= '$class_id'  order by stud_name	 ";
- 
+
 	$result = $xoopsDB->query($sql) or redirect_header($_SERVER['PHP_SELF'],3, $xoopsDB->error());
 
 	//var_dump ($grade_data) ;
@@ -325,4 +325,36 @@ function clear_data($month_id) {
 		$sql =  "  DELETE       FROM " . $xoopsDB->prefix("afdb_sign") . "  WHERE `month_id` < '$month_id'    " ;
  		$result = $xoopsDB->query($sql)  or die($sql."<br>". $xoopsDB->error());
 
+}
+
+
+
+function  stud_id_fix($month_id)
+{
+
+    global $xoopsDB;
+    $sql = 'SELECT count(`stud_id`) as  cc FROM ' . $xoopsDB->prefix('afdb_sign') . "  Where  `month_id` = '$month_id'  and stud_id=''  " ;
+    $result = $xoopsDB->query($sql);
+    //echo $sql ;
+    while($data_row=$xoopsDB->fetchArray($result)){
+ 			$cc = $data_row['cc'] ;
+	}
+
+    //不修正
+    if ( $cc==0)
+        return ;
+
+
+
+    $sql = ' SELECT A.* , S.stud_id as Ostud_id , S.class_sit_num as Oclass_sit_num  FROM    ' . $xoopsDB->prefix('afdb_sign') . "  A  , "  . $xoopsDB->prefix('e_student') .  "  S  " .
+    "      where A.month_id= '$month_id'  and A.stud_id='' and  A.class_id_base = S.class_id    and A.stud_name= S.name    ";
+
+    $result = $xoopsDB->queryF($sql) ;
+    while($row=$xoopsDB->fetchArray($result)){
+
+        $sql_U = " UPDATE   "  . $xoopsDB->prefix("afdb_sign") .
+            " SET   `stud_id`='{$row['Ostud_id']}' , `class_sit_num`='{$row['Oclass_sit_num']}'  WHERE id = '{$row['id']}'  " ;
+       echo         $sql_U  ."<br>"; 
+        $xoopsDB->queryF($sql_U)     or redirect_header(XOOPS_URL . '/modules/system/admin.php?fct=modulesadmin', 30, $xoopsDB->error());
+    }
 }

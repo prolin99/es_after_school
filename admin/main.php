@@ -107,6 +107,10 @@ $month_data = get_month_list() ;
 
 $month_id = $month_data['month_id'] ;
 
+//如果沒有 stud_id  修正 ，程式更新過程中未補，再次檢查
+stud_id_fix( $month_id );
+
+
 //取得年級班別設定
 $data=get_month_grade($month_id) ;
 

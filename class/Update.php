@@ -56,7 +56,7 @@ class Update
         $sql = ' SELECT A.* , S.stud_id as Ostud_id , S.class_sit_num as Oclass_sit_num  FROM    ' . $xoopsDB->prefix('afdb_sign') . "  A  , "  . $xoopsDB->prefix('e_student') .  "  S  " .
         "      where A.class_id_base = S.class_id    and A.stud_name= S.name    ";
 
-     	$result = $xoopsDB->query($sql) ;
+     	$result = $xoopsDB->queryF($sql) ;
      	while($row=$xoopsDB->fetchArray($result)){
 
             $sql_U = " UPDATE   "  . $xoopsDB->prefix("afdb_sign") .
