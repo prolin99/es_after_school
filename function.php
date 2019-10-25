@@ -192,7 +192,32 @@ function get_as_signs($month_id , $class_id , $grade_data , $isAdmin=0) {
 }
 
 
+function get_as_signs_join_charge($month_id , $class_id , $grade_data , $isAdmin=0) {
+	//取得目前已報名資料
+	global  $xoopsDB ;
+	if ($isAdmin)
+		$sql=" select  a.* , c.* from  " . $xoopsDB->prefix("afdb_sign")  . "  a , " .  $xoopsDB->prefix("charge_account")  . "  c , " .
+        "  where  a.month_id = '$month_id'  and a.stud_id = c.stud_sn " .
+        "  order by grade_year,class_id,time_mode,class_id_base ,stud_name	 ";
+	else
+		$sql=" select  * from  " . $xoopsDB->prefix("afdb_sign")  ."  where  month_id = '$month_id'  and class_id_base= '$class_id'  order by stud_name	 ";
+	$result = $xoopsDB->query($sql) or redirect_header($_SERVER['PHP_SELF'],3, $xoopsDB->error());
 
+	//var_dump ($grade_data) ;
+	while($row=$xoopsDB->fetchArray($result)){
+		$grade_time= $row['grade_year'] . '_' . $row['time_mode'] ;
+		//echo $grade_data[$grade_time]['pay_sum'] ;
+		$row['pay_sum'] =  $grade_data[$grade_time]['pay_sum'] ;
+        //如果年級和年段不同做提醒
+        if ($row['grade_year'] <> substr($row['class_id_base'],0,1))
+            $row['joinfg'] = true ;
+
+		$data[]=$row ;
+
+	}
+	return $data ;
+
+}
 
 
 

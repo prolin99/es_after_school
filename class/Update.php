@@ -27,29 +27,42 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 class Update
 {
 
-    /*
-public static function chk_1()
-{
-global $xoopsDB;
-$sql = 'SELECT count(`tag`) FROM ' . $xoopsDB->prefix('tadnews_files_center');
-$result = $xoopsDB->query($sql);
-if (empty($result)) {
-return true;
-}
 
-return false;
-}
+    public static function chk_stud_id()
+    {
+        global $xoopsDB;
+        $sql = 'SELECT count(`stud_id`) FROM ' . $xoopsDB->prefix('afdb_sign');
+        $result = $xoopsDB->query($sql);
+        if (empty($result)) {
+            return false;
+        }
 
-public static function go_1()
-{
-global $xoopsDB;
-$sql = 'ALTER TABLE ' . $xoopsDB->prefix('tadnews_files_center') . "
-ADD `upload_date` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '上傳時間',
-ADD `uid` MEDIUMINT(8) UNSIGNED NOT NULL DEFAULT 0 COMMENT '上傳者',
-ADD `tag` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '註記'
-";
-$xoopsDB->queryF($sql) or redirect_header(XOOPS_URL . '/modules/system/admin.php?fct=modulesadmin', 30, $xoopsDB->error());
-}
- */
+        return true;
+    }
+
+    public static function go_stud_id()
+    {
+        global $xoopsDB;
+        $sql = 'ALTER TABLE  ' . $xoopsDB->prefix('afdb_sign') . "
+        ADD `stud_id` varchar(20) NOT NULL,
+        ADD `class_sit_num` tinyint(4) NOT NULL
+        ";
+        $xoopsDB->queryF($sql) or redirect_header(XOOPS_URL . '/modules/system/admin.php?fct=modulesadmin', 30, $xoopsDB->error());
+    }
+
+    public static function go_stud_id_full()
+    {
+        global $xoopsDB;
+        $sql = ' SELECT A.* , S.stud_id as Ostud_id , S.class_sit_num as Oclass_sit_num  FROM    ' . $xoopsDB->prefix('afdb_sign') . "  A  , "  . $xoopsDB->prefix('e_student') .  "  S  " .
+        "      where A.class_id_base = S.class_id    and A.stud_name= S.name    ";
+
+     	$result = $xoopsDB->query($sql) ;
+     	while($row=$xoopsDB->fetchArray($result)){
+
+            $sql_U = " UPDATE   "  . $xoopsDB->prefix("afdb_sign") .
+                " SET   `stud_id`='{$row['Ostud_id']}' , `class_sit_num`='{$row['Oclass_sit_num']}'  WHERE id = '{$row['id']}'  " ;
+            $xoopsDB->queryF($sql_U)     or redirect_header(XOOPS_URL . '/modules/system/admin.php?fct=modulesadmin', 30, $xoopsDB->error());
+		}
+    }
 
 }

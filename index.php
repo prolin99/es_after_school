@@ -25,8 +25,10 @@ $month_id = $data['month_data']['month_id'] ;
 //增加學生---------------------------------------------------------------------------------------------------
 if ($_POST['ADD']  and $_POST['sel_stud'] ) {
 
+ 	list($sit,$name,$stud_id) = preg_split("/[,]+/", $_POST['sel_stud'] );
+
 	//檢查是否存在
-	$sql = "Select *  from "  . $xoopsDB->prefix("afdb_sign") ." where  month_id ='$month_id'  and  class_id_base='{$_POST[OCLASS_ID]}' and stud_name ='{$_POST[sel_stud]} ' "  ;
+	$sql = "Select *  from "  . $xoopsDB->prefix("afdb_sign") ." where  month_id ='$month_id'  and  class_id_base='{$_POST[OCLASS_ID]}' and stud_name ='$name '   "  ;
 	$result = $xoopsDB->query($sql)  or die($sql."<br>". $xoopsDB->error());
 	$row=$xoopsDB->fetchArray($result) ;
 	if ($row['id'] ){
@@ -34,8 +36,8 @@ if ($_POST['ADD']  and $_POST['sel_stud'] ) {
 	}else {
 		//新增一筆
 		$grade_year = $_POST['grade_year'] ;
-		$sql = " insert into " . $xoopsDB->prefix("afdb_sign") ."  ( id , month_id , grade_year , class_id , class_id_base , stud_name	  , stud_sex , time_mode, spec , ps )
-							   values ('0' , '$month_id'  ,  $grade_year  ,  $_POST[class_id_set] , $_POST[OCLASS_ID]  ,'$_POST[sel_stud] ' ,0 , $_POST[time_mode] ,'$_POST[spec]' , '$_POST[ps]'  ) " ;
+		$sql = " insert into " . $xoopsDB->prefix("afdb_sign") ."  ( id , month_id , grade_year , class_id , class_id_base , stud_name	  , stud_sex , time_mode, spec , ps  , stud_id , class_sit_num )
+							   values ('0' , '$month_id'  ,  $grade_year  ,  $_POST[class_id_set] , $_POST[OCLASS_ID]  ,'$name' ,0 , $_POST[time_mode] ,'$_POST[spec]' , '$_POST[ps]' , '$stud_id' , '$sit' ) " ;
 
 		$result = $xoopsDB->query($sql)  or die($sql."<br>". $xoopsDB->error());
 	}

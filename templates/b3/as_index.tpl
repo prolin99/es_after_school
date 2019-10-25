@@ -32,7 +32,7 @@
   <label for="sel_stud">學生:</label>
   <select name="sel_stud"  class='form-control'   >
 	<{foreach  key=key item=list   from= $data.class_stud }>
-		<option  value="<{$list.name}>"><{$list.class_sit_num}>.<{$list.name}></option>
+		<option  value="<{$list.class_sit_num}>,<{$list.name}>,<{$list.stud_id}>"><{$list.class_sit_num}>.<{$list.name}></option>
 	<{/foreach}>
   </select>
   <label for="time_mode">年段班：</label>

@@ -19,9 +19,9 @@ CREATE TABLE `afdb_grade` (
   `pay` int(11) NOT NULL DEFAULT '0',
   `pay_sum` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `month_id` (`month_id`,`grade_year`,`time_mode`)  
-) ENGINE=MyISAM  COMMENT='課後班別'; 
-  
+  KEY `month_id` (`month_id`,`grade_year`,`time_mode`)
+) ENGINE=MyISAM  COMMENT='課後班別';
+
 CREATE TABLE `afdb_sign` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `month_id` int(11) NOT NULL,
@@ -33,6 +33,8 @@ CREATE TABLE `afdb_sign` (
   `time_mode` tinyint(4) NOT NULL,
   `spec` tinyint(4) NOT NULL,
   `ps` varchar(80) NOT NULL,
+  `stud_id` varchar(20) NOT NULL,
+  `class_sit_num` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `month_id` (`month_id`,`grade_year`)
 ) ENGINE=MyISAM   COMMENT='課後報名';
