@@ -196,9 +196,14 @@ function get_as_signs_join_charge($month_id , $class_id , $grade_data , $isAdmin
 	//取得目前已報名資料
 	global  $xoopsDB ;
 	if ($isAdmin)
+    /*
 		$sql=" select  a.* , c.* from  " . $xoopsDB->prefix("afdb_sign")  . "  a , " .  $xoopsDB->prefix("charge_account")  . "  c   " .
         "  where  a.month_id = '$month_id'  and a.stud_id = c.stud_sn " .
         "  order by a.grade_year, a.class_id, a.time_mode, a.class_id_base , a.stud_name	 ";
+        */
+        $sql=" select   a.* , c.*   , a.stud_name as oname  from   " . $xoopsDB->prefix("afdb_sign")   . "  a       LEFT JOIN " .  $xoopsDB->prefix("charge_account")   . "  c " .
+            " on ( a.month_id = '$month_id'  and a.stud_id = c.stud_sn ) "  .
+            "  order by a.grade_year, a.class_id, a.time_mode, a.class_id_base , a.stud_name	 ";
 	else
 		$sql=" select  * from  " . $xoopsDB->prefix("afdb_sign")  ."  where  month_id = '$month_id'  and class_id_base= '$class_id'  order by stud_name	 ";
 
@@ -345,16 +350,23 @@ function  stud_id_fix($month_id)
         return ;
 
 
-
+/*
     $sql = ' SELECT A.* , S.stud_id as Ostud_id , S.class_sit_num as Oclass_sit_num  FROM    ' . $xoopsDB->prefix('afdb_sign') . "  A  , "  . $xoopsDB->prefix('e_student') .  "  S  " .
     "      where A.month_id= '$month_id'  and A.stud_id='' and  A.class_id_base = S.class_id    and A.stud_name= S.name    ";
+*/
+    //left join
+
+   $sql =" SELECT A.* , S.stud_id as Ostud_id , S.class_sit_num as Oclass_sit_num  FROM  " .   $xoopsDB->prefix('afdb_sign') . "  A   LEFT JOIN  "  .  $xoopsDB->prefix('e_student') .  "  S  " .
+                " ON   S.class_id=A.class_id_base    and   S.name= A.stud_name  " .
+                "  where A.month_id= '$month_id'  and A.stud_id=''  " ;
+
 
     $result = $xoopsDB->queryF($sql) ;
     while($row=$xoopsDB->fetchArray($result)){
 
         $sql_U = " UPDATE   "  . $xoopsDB->prefix("afdb_sign") .
             " SET   `stud_id`='{$row['Ostud_id']}' , `class_sit_num`='{$row['Oclass_sit_num']}'  WHERE id = '{$row['id']}'  " ;
-       echo         $sql_U  ."<br>"; 
+       echo         $sql_U  ."<br>";
         $xoopsDB->queryF($sql_U)     or redirect_header(XOOPS_URL . '/modules/system/admin.php?fct=modulesadmin', 30, $xoopsDB->error());
     }
 }

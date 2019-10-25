@@ -53,8 +53,11 @@ class Update
     public static function go_stud_id_full()
     {
         global $xoopsDB;
-        $sql = ' SELECT A.* , S.stud_id as Ostud_id , S.class_sit_num as Oclass_sit_num  FROM    ' . $xoopsDB->prefix('afdb_sign') . "  A  , "  . $xoopsDB->prefix('e_student') .  "  S  " .
-        "      where A.class_id_base = S.class_id    and A.stud_name= S.name    ";
+        //$sql = ' SELECT A.* , S.stud_id as Ostud_id , S.class_sit_num as Oclass_sit_num  FROM    ' . $xoopsDB->prefix('afdb_sign') . "  A  , "  . $xoopsDB->prefix('e_student') .  "  S  " .
+        //"      where A.class_id_base = S.class_id    and A.stud_name= S.name    ";
+
+        $sql =" SELECT A.* , S.stud_id as Ostud_id , S.class_sit_num as Oclass_sit_num  FROM  " .   $xoopsDB->prefix('afdb_sign') . "  A   LEFT JOIN  "  .  $xoopsDB->prefix('e_student') .  "  S  " .
+                     " ON   S.class_id=A.class_id_base    and   S.name= A.stud_name  "  ;
 
      	$result = $xoopsDB->queryF($sql) ;
      	while($row=$xoopsDB->fetchArray($result)){

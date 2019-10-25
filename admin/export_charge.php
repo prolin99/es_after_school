@@ -76,7 +76,7 @@ if  ($_GET['mid']) {
             		->setCellValue('A'.$row,$n_grade_id)
             		->setCellValue('B'.$row ,$n_class_id)
             		->setCellValue('C'.$row ,$stud['class_sit_num']  )
-            		->setCellValue('D'.$row,$stud['stud_name'])
+            		->setCellValue('D'.$row,$stud['oname'])
             		->setCellValue('E'.$row,$stud['pay_sum'])
             		->setCellValue('F'.$row, $stud['acc_name'])
             		->setCellValue('G'.$row, $stud['acc_person_id'])
