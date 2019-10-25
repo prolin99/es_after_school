@@ -196,11 +196,12 @@ function get_as_signs_join_charge($month_id , $class_id , $grade_data , $isAdmin
 	//取得目前已報名資料
 	global  $xoopsDB ;
 	if ($isAdmin)
-		$sql=" select  a.* , c.* from  " . $xoopsDB->prefix("afdb_sign")  . "  a , " .  $xoopsDB->prefix("charge_account")  . "  c , " .
+		$sql=" select  a.* , c.* from  " . $xoopsDB->prefix("afdb_sign")  . "  a , " .  $xoopsDB->prefix("charge_account")  . "  c   " .
         "  where  a.month_id = '$month_id'  and a.stud_id = c.stud_sn " .
-        "  order by grade_year,class_id,time_mode,class_id_base ,stud_name	 ";
+        "  order by a.grade_year, a.class_id, a.time_mode, a.class_id_base , a.stud_name	 ";
 	else
 		$sql=" select  * from  " . $xoopsDB->prefix("afdb_sign")  ."  where  month_id = '$month_id'  and class_id_base= '$class_id'  order by stud_name	 ";
+ 
 	$result = $xoopsDB->query($sql) or redirect_header($_SERVER['PHP_SELF'],3, $xoopsDB->error());
 
 	//var_dump ($grade_data) ;

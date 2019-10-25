@@ -24,7 +24,7 @@ if  ($_GET['mid']) {
 	$grade_data=get_month_grade($month_id) ;
 
  	//取得報名學生資料
- 	$sign_studs = get_as_signs($month_id , $class_id  , $grade_data ,1) ;
+ 	$sign_studs = get_as_signs_join_charge($month_id , $class_id  , $grade_data ,1) ;
 
 
  	$objPHPExcel = new PHPExcel();
@@ -54,8 +54,13 @@ if  ($_GET['mid']) {
             ->setCellValue('I' . $row, '立帳局號')
 			->setCellValue('J' . $row, '存簿帳號')
 			->setCellValue('K' . $row, '劃撥帳號')
-			->setCellValue('L' . $row, '現金繳費')
-			->setCellValue('M' . $row, '學生序號(可略)')
+			->setCellValue('L' . $row, '現金繳費(0/1)')
+			->setCellValue('M' . $row, '班年段')
+			->setCellValue('N' . $row, '班別')
+            ->setCellValue('O' . $row, '時段')
+            ->setCellValue('P' . $row, '減免')
+             ->setCellValue('Q' . $row, '費用')
+             ->setCellValue('R' . $row, '備註')
 			;
 
 
@@ -73,14 +78,19 @@ if  ($_GET['mid']) {
             		->setCellValue('C'.$row ,$stud['class_sit_num']  )
             		->setCellValue('D'.$row,$stud['stud_name'])
             		->setCellValue('E'.$row,$stud['pay_sum'])
-            		->setCellValue('F'.$row, '')
-            		->setCellValue('G'.$row, '')
-            		->setCellValue('H'.$row, '')
-            		->setCellValue('I'.$row, '')
-					->setCellValue('J'.$row, '')
-					->setCellValue('K'.$row, '')
+            		->setCellValue('F'.$row, $stud['acc_name'])
+            		->setCellValue('G'.$row, $stud['acc_person_id'])
+            		->setCellValue('H'.$row, $stud['acc_mode'])
+            		->setCellValue('I'.$row, $stud['acc_b_id'])
+					->setCellValue('J'.$row, $stud['acc_id'])
+					->setCellValue('K'.$row, $stud['acc_g_id'])
 					->setCellValue('L'.$row, '')
-					->setCellValue('M'.$row, 'id:' .  $stud['stud_id'])
+ 					->setCellValue('M'.$row , $stud['grade_year'] )
+					->setCellValue('N'.$row, $AS_SET['class_set'][$stud['class_id']])
+            		->setCellValue('O'.$row, $AS_SET['time'][$stud['time_mode']])
+            		->setCellValue('P'.$row, $AS_SET['decrease_set'][$stud['spec']])
+            		->setCellValue('Q'.$row, $stud['pay_sum'])
+            		->setCellValue('R'.$row, $stud['ps'])
             		;
 
 	}
