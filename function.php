@@ -202,11 +202,13 @@ function get_as_signs_join_charge($month_id , $class_id , $grade_data , $isAdmin
         "  order by a.grade_year, a.class_id, a.time_mode, a.class_id_base , a.stud_name	 ";
         */
         $sql=" select   a.* , c.*   , a.stud_name as oname  from   " . $xoopsDB->prefix("afdb_sign")   . "  a       LEFT JOIN " .  $xoopsDB->prefix("charge_account")   . "  c " .
-            " on ( a.month_id = '$month_id'  and a.stud_id = c.stud_sn ) "  .
+            " on (   a.stud_id = c.stud_sn ) "  .
+            " where a.month_id = '$month_id'    "  .
             "  order by a.grade_year, a.class_id, a.time_mode, a.class_id_base , a.stud_name	 ";
+
 	else
 		$sql=" select  * from  " . $xoopsDB->prefix("afdb_sign")  ."  where  month_id = '$month_id'  and class_id_base= '$class_id'  order by stud_name	 ";
-
+    //die($sql ) ;
 	$result = $xoopsDB->query($sql) or redirect_header($_SERVER['PHP_SELF'],3, $xoopsDB->error());
 
 	//var_dump ($grade_data) ;
