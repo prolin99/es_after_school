@@ -5,7 +5,7 @@
 <h3>現在期別：<{$data.month_data.monthdoc}></h3>
 
  <{if  (($data.month_data.cando>0) and ( $data.month_data.month_id ) ) }>
- <span class="badge badge-success">尚在填報期間！報名截止：<{$data.month_data.deadline}></span>
+ <span class="badge badge-success bg-success">尚在填報期間！報名截止：<{$data.month_data.deadline}></span>
   <a class="btn btn-primary" href="export.php?mid=<{$data.month_data.month_id}>" >點名冊</a>
  <{else}>
  <span class="label  label-default">填報時間結束！報名截止：<{$data.month_data.deadline}></span>
@@ -19,7 +19,7 @@
       <label for="admin_class_id">班級</label>
 
       <{html_options name='admin_class_id' class='form-control'  options=$data.class_list_c  selected=$data.sel_class  onchange="submit();"}>
-      <span  class="badge badge-danger">管理者權限</span>
+      <span  class="badge badge-danger bg-sanger">管理者權限</span>
   </div>
 
 </form>
@@ -29,29 +29,43 @@
 
 
 <{if ($data.month_data.cando and $data.month_data.month_id )}>
-<form method="post" class="form-inline"  action="index.php" name="form2">
-  <div class="form-group">
-  <label for="sel_stud">學生:</label>
+<form method="post" class="form-horizontal  alert alert-primary"  action="index.php" name="form2">
+  <div class="form-group row ">
+  <label class="col-sm-2 control-label col-form-label " for="sel_stud">學生:</label>
+  <div class="col-sm-2">
   <select name="sel_stud"  class='form-control'   >
 	<{foreach  key=key item=list   from= $data.class_stud }>
 		<option  value="<{$list.class_sit_num}>,<{$list.name}>,<{$list.stud_id}>"><{$list.class_sit_num}>.<{$list.name}></option>
 	<{/foreach}>
   </select>
-  <label for="time_mode">年段班：</label>
+  </div>
+
+  <label class="col-sm-2 control-label col-form-label text-md-right text-md-end" for="time_mode">年段班：</label>
+  <div class="col-sm-2">
     <{html_options name='grade_year'   class='form-control'  options=$AS_SET.grade_set    selected=$data.grade_year title='人數太少，才年段合併'}>
-  <label for="time_mode">時段：</label>
-    <{html_options name='time_mode'   class='form-control'  options=$AS_SET.time    selected=$data.def_time_mode  }>
-    <label for="class_id_set">班別</label>
+  </div>
+
+  <label class="col-sm-2 control-label col-form-label  " for="time_mode">時段：</label>
+  <div class="col-sm-2">
+      <{html_options name='time_mode'   class='form-control'  options=$AS_SET.time    selected=$data.def_time_mode  }>
+  </div>    
+  </div>
+  <div class="form-group row ">
+    <label class="col-sm-2 control-label col-form-label " for="class_id_set">班別</label>
+  <div class="col-sm-1">
     <{html_options name='class_id_set'  class='form-control'  options=$AS_SET.class_set  title='開多班才選擇'   }>
-
-    <label for="spec">減免</label>
+  </div>
+    <label class="col-sm-2 control-label col-form-label text-md-right text-md-end" for="spec">減免</label>
+  <div class="col-sm-2">
     <{html_options name='spec'   class='form-control'   options=$AS_SET.decrease_set   }>
-
+  </div>
+  <div class="col-sm-3">
   <input name="ps" value=""  class='form-control'  placeholder="備註說明文字">
+  </div>
   <input name="admin_class_id" type="hidden" value="<{$data.sel_class}>" >
   <input name="class_id" type="hidden" value="<{$data.sel_class}>" >
   <input name="OCLASS_ID" type="hidden" value="<{$data.sel_class}>" >
-  <button type="submit" class="btn btn-success" name='ADD' value='ADD' >新增</button>
+  <button type="submit" class="btn btn-success col-sm-2" name='ADD' value='ADD' >新增</button>
 </div>
 </form>
  <{/if}>
@@ -73,10 +87,10 @@
  <{foreach  key=key item=list   from= $data.sign_studs }>
 
 <div class="row <{if ($list.joinfg) }>bg-danger<{/if}>" id="div_<{$list.id}>_<{$list.class_id_base}>_<{$row_i}>" >
-        <span class='col-1 '  id="grade_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.grade_year}>"  >
-            <span class="badge badge-success"><{$row_i++}></span><{$list.grade_year}>
+        <span class='col'  id="grade_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.grade_year}>"  >
+            <span class="badge badge-success bg-success"><{$row_i++}></span><{$list.grade_year}>
         </span>
-        <span class='col-1'  id="classidbase_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.class_id_base}>"> <{$data.class_list_c_s[$list.class_id_base]}> </span>
+        <span class='col'  id="classidbase_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.class_id_base}>"> <{$data.class_list_c_s[$list.class_id_base]}> </span>
         <span class='col-2' id="name_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.stud_name}>"><{$list.stud_name}> <span class="del" ><span class="fa fa-trash" title="刪除"></span></span> </span>
       	<span class='col-1' id="classid_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.class_id}>"> <{$AS_SET.class_set[$list.class_id]}>  </span>
       	<span class='col-1' id="time_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.time_mode}>"> <{$AS_SET.time[$list.time_mode]}> </span>
