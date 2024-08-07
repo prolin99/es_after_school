@@ -5,7 +5,7 @@
 <h3>現在期別：<{$data.month_data.monthdoc}></h3>
 
  <{if  (($data.month_data.cando>0) and ( $data.month_data.month_id ) ) }>
- <span class="badge badge-success bg-success">尚在填報期間！報名截止：<{$data.month_data.deadline}></span>
+ <span class="bg-success badge badge-success">尚在填報期間！報名截止：<{$data.month_data.deadline}></span>
   <a class="btn btn-primary" href="export.php?mid=<{$data.month_data.month_id}>" >點名冊</a>
  <{else}>
  <span class="label  label-default">填報時間結束！報名截止：<{$data.month_data.deadline}></span>
@@ -15,11 +15,11 @@
 <{if ($data.admin)}>
 <form method="post" class="form-inline" action="" name="main">
 
-  <div class="form-group">
+  <div class="form-group ">
       <label for="admin_class_id">班級</label>
 
-      <{html_options name='admin_class_id' class='form-control'  options=$data.class_list_c  selected=$data.sel_class  onchange="submit();"}>
-      <span  class="badge badge-danger bg-sanger">管理者權限</span>
+      <{html_options name='admin_class_id' class='form-control '  options=$data.class_list_c  selected=$data.sel_class  onchange="submit();"}>
+      <span  class="bg-danger badge badge-danger ">管理者權限</span>
   </div>
 
 </form>
@@ -29,7 +29,7 @@
 
 
 <{if ($data.month_data.cando and $data.month_data.month_id )}>
-<form method="post" class="form-horizontal  alert alert-primary"  action="index.php" name="form2">
+<form method="post" class="form-horizontal bg-info alert alert-primary"  action="index.php" name="form2">
   <div class="form-group row ">
   <label class="col-sm-2 control-label col-form-label " for="sel_stud">學生:</label>
   <div class="col-sm-2">
@@ -71,7 +71,7 @@
  <{/if}>
 
 <{$row_i++}>
- <div class="row alert alert-primary" >
+ <div class="row bg-info " >
 
     <span class='col-1'>年段</span>
     <span class='col-1'>原班</span>
