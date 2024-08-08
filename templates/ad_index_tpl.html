@@ -7,6 +7,11 @@
 .table tbody tr > td.success {
   background-color: #dff0d8 !important;
 }
+
+.bgsucc {
+    background-color: #5cb85c;
+}
+
 </style>
 
 
@@ -15,7 +20,7 @@
 <form method="post" action="main.php" name="main">
 <h3>目前期別：<{$month_data.monthdoc }> </h3>
  <{if  ($month_data.cando) }>
- <span class="label label-success">尚在填報期間！</span>
+ <span class="bgsucc label label-success">尚在填報期間！</span>
 <{else}>
  <span class="label label-inverse">填報結束！</span>
  <{/if}>

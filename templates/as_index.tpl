@@ -1,3 +1,19 @@
+<style>
+.table tbody tr > td.success {
+  background-color: #dff0d8 !important;
+}
+
+.bgsucc {
+    background-color: #5cb85c;
+}
+.bgdang {
+    background-color: #d9534f;
+}
+
+.bginfo {
+    background-color: #96d3f2;
+}
+</style>
 
 <{$toolbar}>
 
@@ -5,7 +21,7 @@
 <h3>現在期別：<{$data.month_data.monthdoc}></h3>
 
  <{if  (($data.month_data.cando>0) and ( $data.month_data.month_id ) ) }>
- <span class="bg-success badge badge-success">尚在填報期間！報名截止：<{$data.month_data.deadline}></span>
+ <span class="bgsucc badge badge-success">尚在填報期間！報名截止：<{$data.month_data.deadline}></span>
   <a class="btn btn-primary" href="export.php?mid=<{$data.month_data.month_id}>" >點名冊</a>
  <{else}>
  <span class="label  label-default">填報時間結束！報名截止：<{$data.month_data.deadline}></span>
@@ -19,7 +35,7 @@
       <label for="admin_class_id">班級</label>
 
       <{html_options name='admin_class_id' class='form-control '  options=$data.class_list_c  selected=$data.sel_class  onchange="submit();"}>
-      <span  class="bg-danger badge badge-danger ">管理者權限</span>
+      <span  class="bgdang badge badge-danger ">管理者權限</span>
   </div>
 
 </form>
@@ -29,7 +45,7 @@
 
 
 <{if ($data.month_data.cando and $data.month_data.month_id )}>
-<form method="post" class="form-horizontal bg-info alert alert-primary"  action="index.php" name="form2">
+<form method="post" class="form-horizontal alert alert-primary bginfo"  action="index.php" name="form2">
   <div class="form-group row ">
   <label class="col-sm-2 control-label col-form-label " for="sel_stud">學生:</label>
   <div class="col-sm-2">
@@ -88,7 +104,7 @@
 
 <div class="row <{if ($list.joinfg) }>bg-danger<{/if}>" id="div_<{$list.id}>_<{$list.class_id_base}>_<{$row_i}>" >
         <span class='col'  id="grade_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.grade_year}>"  >
-            <span class="badge badge-success bg-success"><{$row_i++}></span><{$list.grade_year}>
+            <span class="bgsucc badge badge-success bg-success"><{$row_i++}></span><{$list.grade_year}>
         </span>
         <span class='col'  id="classidbase_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.class_id_base}>"> <{$data.class_list_c_s[$list.class_id_base]}> </span>
         <span class='col-2' id="name_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.stud_name}>"><{$list.stud_name}> <span class="del" ><span class="fa fa-trash" title="刪除"></span></span> </span>
