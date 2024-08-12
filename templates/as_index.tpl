@@ -89,30 +89,30 @@
 <{$row_i++}>
  <div class="row bg-info " >
 
-    <span class='col-1'>年段</span>
-    <span class='col-1'>原班</span>
-    <span class='col-2'>姓名</span>
-    <span class='col-1'>班別</span>
-    <span class='col-1'>時段</span>
-    <span class='col-2'>減免</span>
-	<span class='col-1' title='需等報名完成'>費用 </span>
-    <span class='col-2'>備註</span>
+    <span class='col-1 col-md-1'>年段</span>
+    <span class='col-1 col-md-1'>原班</span>
+    <span class='col-2 col-md-2'>姓名</span>
+    <span class='col-1 col-md-1'>班別</span>
+    <span class='col-1 col-md-1'>時段</span>
+    <span class='col-2 col-md-2'>減免</span>
+	<span class='col-1 col-md-1' title='需等報名完成'>費用 </span>
+    <span class='col-2 col-md-2'>備註</span>
 
 
 </div>
  <{foreach  key=key item=list   from= $data.sign_studs }>
 
 <div class="row <{if ($list.joinfg) }>bg-danger<{/if}>" id="div_<{$list.id}>_<{$list.class_id_base}>_<{$row_i}>" >
-        <span class='col'  id="grade_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.grade_year}>"  >
+        <span class='col-1 col-md-1'  id="grade_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.grade_year}>"  >
             <span class="bgsucc badge badge-success bg-success"><{$row_i++}></span><{$list.grade_year}>
         </span>
-        <span class='col'  id="classidbase_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.class_id_base}>"> <{$data.class_list_c_s[$list.class_id_base]}> </span>
-        <span class='col-2' id="name_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.stud_name}>"><{$list.stud_name}> <span class="del" ><span class="fa fa-trash" title="刪除"></span></span> </span>
-      	<span class='col-1' id="classid_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.class_id}>"> <{$AS_SET.class_set[$list.class_id]}>  </span>
-      	<span class='col-1' id="time_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.time_mode}>"> <{$AS_SET.time[$list.time_mode]}> </span>
-      	<span class='col-2' id="spec_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.spec}>"><{$AS_SET.decrease_set[$list.spec]}>   </span>
-      	<span class='col-1'> <{$list.pay_sum }>	</span>
-       	<span class='col-2' id="ps_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.ps}>"> <{$list.ps}>  </span>
+        <span class='col-1 col-md-1'  id="classidbase_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.class_id_base}>"> <{$data.class_list_c_s[$list.class_id_base]}> </span>
+        <span class='col-2 col-md-2' id="name_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.stud_name}>"><{$list.stud_name}> <span class="del" ><span class="fa fa-trash" title="刪除"></span></span> </span>
+      	<span class='col-1 col-md-1' id="classid_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.class_id}>"> <{$AS_SET.class_set[$list.class_id]}>  </span>
+      	<span class='col-1 col-md-1' id="time_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.time_mode}>"> <{$AS_SET.time[$list.time_mode]}> </span>
+      	<span class='col-2 col-md-2' id="spec_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.spec}>"><{$AS_SET.decrease_set[$list.spec]}>   </span>
+      	<span class='col-1 col-md-1'> <{$list.pay_sum }>	</span>
+       	<span class='col-2 col-md-2' id="ps_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.ps}>"> <{$list.ps}>  </span>
 </div>
 
 <{/foreach }>
