@@ -85,8 +85,9 @@
 </div>
 </form>
  <{/if}>
+  
+ <{assign var="row_i" value=1 }>
 
-<{$row_i++}>
  <div class="row bg-info " >
 
     <span class='col-1 col-md-1'>年段</span>
