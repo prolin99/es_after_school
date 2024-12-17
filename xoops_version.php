@@ -9,7 +9,7 @@
 
 $modversion['name'] = '課後照顧報名';                //模組名稱
 #$modversion['version'] = '1.24';                //模組版次
-$modversion['version'] = $_SESSION['xoops_version'] >= 20511 ? '1.3.0-Stable' : '1.3';
+$modversion['version'] = $_SESSION['xoops_version'] >= 20511 ? '1.4.0-Stable' : '1.4';
 $modversion['author'] = 'prolin(prolin@tn.edu.tw)';        //模組作者
 $modversion['description'] = '課後照顧報名、費用計算';            //模組說明
 $modversion['credits'] = 'prolin';                //模組授權者
