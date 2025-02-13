@@ -103,7 +103,7 @@
 </div>
  <{foreach  key=key item=list   from= $data.sign_studs }>
 
-<div class="row <{if ($list.joinfg) }>bg-danger<{/if}>" id="div_<{$list.id}>_<{$list.class_id_base}>_<{$row_i}>" >
+<div class="row <{if ($list.joinfg) }>bg-danger<{/if}>" <{if ($list.joinfg) }>title="年段不同提醒" <{/if}> id="div_<{$list.id}>_<{$list.class_id_base}>_<{$row_i}>" >
         <span class='col-1 col-md-1'  id="grade_<{$list.id}>_<{$list.class_id_base}>" data="<{$list.grade_year}>"  >
             <span class="bgsucc badge badge-success bg-success"><{$row_i++}></span><{$list.grade_year}>
         </span>
