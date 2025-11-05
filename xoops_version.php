@@ -9,7 +9,7 @@
 
 $modversion['name'] = '課後照顧報名';                //模組名稱
 #$modversion['version'] = '1.24';                //模組版次
-$modversion['version'] = $_SESSION['xoops_version'] >= 20511 ? '1.5.0-Stable' : '1.5';
+$modversion['version'] = $_SESSION['xoops_version'] >= 20511 ? '1.6.0-Stable' : '1.6';
 $modversion['author'] = 'prolin(prolin@tn.edu.tw)';        //模組作者
 $modversion['description'] = '課後照顧報名、費用計算';            //模組說明
 $modversion['credits'] = 'prolin';                //模組授權者
@@ -74,11 +74,11 @@ $modversion['config'][$i]['default'] = "0.無\r\n1.低收入戶\r\n2.身心障�
 
 ++$i;
 $modversion['config'][$i]['name'] = 'es_as_timesect';
-$modversion['config'][$i]['title'] = '_MI_ESAFTER_CONFIG_TITL2';
+$modversion['config'][$i]['title'] = '_MI_ESAFTER_CONFIG_TITLE2';
 $modversion['config'][$i]['description'] = '_MI_ESAFTER_CONFIG_DESC2';
 $modversion['config'][$i]['formtype'] = 'textbox';
 $modversion['config'][$i]['valuetype'] = 'text';
-$modversion['config'][$i]['default'] = '4:00,260;5:30,400';
+$modversion['config'][$i]['default'] = '4:00,336;5:30,400';
 
 ++$i;
 $modversion['config'][$i]['name'] = 'es_as_grade';
